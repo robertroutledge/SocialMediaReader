@@ -29,7 +29,7 @@ namespace SocialMediaReader.Models.SocialMedia.Facebook
             string url = String.Format("{0}{1}&access_token={2}",baseUrl, PostUrl, AccessToken);
 
             //get data
-            dynamic jsonObj = await Get(url);
+            dynamic jsonObj = await GetFB(url);
             
             //fills out facebook model from jsonObj, data then used to display to webpage and populate SQL server
             postss posts = new postss(jsonObj);

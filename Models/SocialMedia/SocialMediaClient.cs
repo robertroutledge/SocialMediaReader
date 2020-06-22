@@ -64,9 +64,35 @@ namespace SocialMediaReader.Models.SocialMedia
             return (accesstoken);
         }
 
-        public async Task<dynamic> Get(string url)
+        public async Task<dynamic> GetLI(string url, string access_token = "")
         {
+
             //Generate a WebRequest using the URL
+            //generates a blank access_token for the body, which is overwritten by the access_token for Linkedin
+            HttpWebRequest request = WebRequest.Create(url) as HttpWebRequest;
+            request.Method = "GET";
+            request.Headers.Add("Authorization: Bearer " + access_token);
+
+            //Ask for data from the server
+            using (HttpWebResponse response = await request.GetResponseAsync() as HttpWebResponse)
+            {
+                StreamReader reader = new StreamReader(response.GetResponseStream());
+
+                //Place result into a string
+                string result = await reader.ReadToEndAsync();
+
+                //Convert result to JSON Object
+                dynamic jsonObj = System.Web.Helpers.Json.Decode(result);
+
+                return (jsonObj);
+            }
+
+        }
+        public async Task<dynamic> GetFB(string url)
+        {
+
+            //Generate a WebRequest using the URL
+            //generates a blank access_token for the body, which is overwritten by the access_token for Linkedin
             HttpWebRequest request = WebRequest.Create(url) as HttpWebRequest;
             request.Method = "GET";
 

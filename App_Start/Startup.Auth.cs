@@ -53,14 +53,6 @@ namespace SocialMediaReader
             // This is similar to the RememberMe option when you log in.
             app.UseTwoFactorRememberBrowserCookie(DefaultAuthenticationTypes.TwoFactorRememberBrowserCookie);
 
-            // Uncomment the following lines to enable logging in with third party login providers
-            //app.UseMicrosoftAccountAuthentication(
-            //    clientId: "",
-            //    clientSecret: "");
-
-            //app.UseTwitterAuthentication(
-            //   consumerKey: "",
-            //   consumerSecret: "");
 
             var facebookAuthenticationOptions = new FacebookAuthenticationOptions()
             {
@@ -79,21 +71,32 @@ namespace SocialMediaReader
                 SendAppSecretProof = true
             };
 
-            //facebookAuthenticationOptions.Scope.Add("email user_friends user_likes user_photos");
-
             app.UseFacebookAuthentication(facebookAuthenticationOptions);
 
-            //these two lines were necessary before we created and built out facebook authentication options variable
-            //appId: ConfigurationManager.AppSettings["FacebookAppID"],
-               //appSecret: ConfigurationManager.AppSettings["FacebookAppSecret"]);
+
+            var linkedinauthenticationOptions = new LinkedInAuthenticationOptions()
+            {
+                ClientId = ConfigurationManager.AppSettings["LinkedInID"],
+                ClientSecret = ConfigurationManager.AppSettings["LinkedInSecret"],
+                Provider = new LinkedInAuthenticationProvider()
+                {
+                    OnAuthenticated = context =>
+                    {
+                        context.Identity.AddClaim(new Claim("urn:tokens:linkedin", context.AccessToken));
+
+                        return Task.FromResult(0);
+                    }
+                },
+                SignInAsAuthenticationType = DefaultAuthenticationTypes.ExternalCookie
+            };
+
+            app.UseLinkedInAuthentication(linkedinauthenticationOptions);
 
 
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+
+
+
         }
     }
 }

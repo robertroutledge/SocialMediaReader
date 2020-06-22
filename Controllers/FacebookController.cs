@@ -29,6 +29,7 @@ namespace SocialMediaReader.Controllers
             facebookClient.HttpContext = HttpContext;
 
             postss posts = await facebookClient.posts();
+            
 
             return (View(posts));
             

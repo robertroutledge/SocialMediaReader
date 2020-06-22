@@ -367,10 +367,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\FacebookController - working copy end of vid 6.cs" />
     <Compile Include="Controllers\FacebookController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LinkedinController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Models\SocialMedia\Linkedin\info.cs" />
+    <Compile Include="Models\SocialMedia\Linkedin\LinkedinClient.cs" />
     <Compile Include="Models\SQLUpload.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -379,7 +381,6 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\SocialMedia\Facebook\FacebookClient.cs" />
-    <Compile Include="Models\SocialMedia\Facebook\postss - working copy end of vid 6.cs" />
     <Compile Include="Models\SocialMedia\Facebook\postss.cs" />
     <Compile Include="Models\SocialMedia\SocialMediaClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -545,8 +546,8 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Facebook\Posts.cshtml" />
-    <Content Include="Views\Facebook\Posts - working copy end of vid 6.cshtml" />
     <Content Include="Views\Home\Privacy.cshtml" />
+    <Content Include="Views\Linkedin\LIPosts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
