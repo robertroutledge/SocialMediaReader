@@ -1,0 +1,23 @@
+﻿
+@model SocialMediaReader.Models.SocialMedia.Linkedin.info
+@{
+    ViewBag.Title = "LinkedIn User Data";
+}
+
+<h2>Data From LinkedIn</h2>
+
+
+<div class="panel-group">
+    <div class="panel-heading">Data from LinkedIn about <b>@Model.firstName @Model.lastName</b></div>
+    <div class="panel-body">
+
+        @if (!String.IsNullOrEmpty(Model.id))
+        {
+            <div>LinkedIn ID: @Model.id</div>
+        }
+
+    </div>
+</div>
+
+
+
